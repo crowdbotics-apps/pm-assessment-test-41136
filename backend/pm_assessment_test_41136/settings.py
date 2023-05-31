@@ -108,7 +108,7 @@ ROOT_URLCONF = 'pm_assessment_test_41136.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'web_build')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,10 +134,10 @@ DATABASES = {
     }
 }
 
-if env.str("DATABASE_URL", default=None):
-    DATABASES = {
-        'default': env.db()
-    }
+# if env.str("DATABASE_URL", default=None):
+#     DATABASES = {
+#         'default': env.db()
+#     }
 
 
 # Password validation
