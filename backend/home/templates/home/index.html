@@ -4,20 +4,178 @@
 {% load bootstrap4 %}
 
 {% block content %}
-    <div class="jumbotron mt-5 editable" data-remote="{{ homepage.api }}" data-field="{{ homepage.field }}">
-      {{ homepage.body|safe }}
-    </div>
-    <div class="row mt-0 mb-5">
-        {% for package in packages %}
-            <div class="col-md-4 mt-5">
-                <div class="card">
-                  <div class="card-body text-center">
-                    <a class="card-title" href="{{package.url}}">{{package.name}}</a>
-                  </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+<style>
+    .table-container {
+      margin: 20px auto;
+      max-width: 800px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background-color: #fff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px;
+    }
+
+    th {
+      background-color: #3f51b5;
+      color: #fff;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f5f5f5;
+    }
+
+    tr:hover {
+      background-color: #e8eaf6;
+    }
+  </style>
+    <div class="table-container">
+  <table class="striped">
+    <tr>
+      <th colspan="2">Product Requirements Document (PRD) - Basic Lottery App</th>
+    </tr>
+    <tr>
+      <td><strong>1. Introduction:</strong></td>
+      <td>
+        The Basic Lottery App is a mobile application that allows users to participate in lottery games.
+        The app provides a user-friendly interface for purchasing tickets, checking results, and managing winnings.
+        The primary goal of the app is to offer an enjoyable and convenient experience for lottery enthusiasts.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>2. Target Audience:</strong></td>
+      <td>
+        The target audience for the Basic Lottery App includes individuals who are of legal age to participate in lottery games.
+        The app aims to attract both casual players and avid lottery enthusiasts.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>3. Features:</strong></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>3.1 User Registration and Authentication</td>
+      <td>
+        - Users can create an account and provide necessary details such as name, email, and password.<br>
+        - The app should offer a secure authentication mechanism, such as email verification or two-factor authentication, to ensure the integrity of user accounts.
+      </td>
+    </tr>
+    <tr>
+      <td>3.2 Ticket Purchase</td>
+      <td>
+        - Users can select their preferred lottery game and purchase tickets within the app.<br>
+        - The app should provide an intuitive interface for selecting numbers or generating random numbers.<br>
+        - Users should have the option to purchase multiple tickets for a single draw.
+      </td>
+    </tr>
+    <tr>
+      <td>3.3 Results and Notifications</td>
+      <td>
+        - The app should regularly update and display the latest lottery results.<br>
+        - Users should receive notifications about the results of their purchased tickets, including whether they have won a prize.<br>
+        - Notifications should be customizable to allow users to choose their preferred frequency and delivery method (e.g., push notifications or email).
+      </td>
+    </tr>
+    <tr>
+      <td>3.4 Prize Claiming</td>
+      <td>
+        - Users should be able to claim their winnings within the app.<br>
+        - The app should provide clear instructions on how to claim prizes and any additional documentation required.<br>
+        - Users should have the option to have their winnings deposited directly into their bank account or choose alternative payment methods.
+      </td>
+    </tr>
+    <tr>
+      <td>3.5 Transaction History</td>
+      <td>
+        - The app should maintain a transaction history that allows users to view their ticket purchases, winnings, and overall expenditure.<br>
+        - Users should be able to filter and sort their transaction history based on various criteria, such as date or lottery game.
+      </td>
+    </tr>
+    <tr>
+      <td>3.6 Account Management</td>
+      <td>
+        - Users should have the ability to update their account information, including personal details and contact preferences.<br>
+        - The app should offer options for users to set responsible gambling limits, such as deposit limits or self-exclusion periods.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>4. Non-Functional Requirements:</strong></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>4.1 Security</td>
+      <td>
+        - The app should implement industry-standard security measures to protect user data and transactions.<br>
+        - Secure communication protocols (e.g., SSL/TLS) should be used for data transmission.<br>
+        - User passwords should be stored using strong encryption techniques.<br>
+        - The app should adhere to relevant privacy regulations, such as GDPR or CCPA.
+      </td>
+    </tr>
+    <tr>
+      <td>4.2 Performance</td>
+      <td>
+        - The app should be responsive and provide a smooth user experience even during peak usage times.<br>
+        - Loading times for ticket purchases, results, and other app features should be minimal.
+      </td>
+    </tr>
+    <tr>
+      <td>4.3 Platform Compatibility</td>
+      <td>
+        - The Basic Lottery App should be developed as a cross-platform application compatible with both iOS and Android devices.<br>
+        - The app should be optimized for different screen sizes and resolutions.
+      </td>
+    </tr>
+    <tr>
+      <td>4.4 Localization</td>
+      <td>
+        - The app should support multiple languages to cater to a diverse user base.<br>
+        - Localization should include translations for user interface elements, notifications, and any textual content within the app.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>5. Constraints and Assumptions:</strong></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>5.1 Legal Compliance</td>
+      <td>
+        - The Basic Lottery App should comply with the laws and regulations of the regions where it will be made available.<br>
+        - Legal restrictions related to age verification, payment processing, and lottery operations should be considered during development.
+      </td>
+    </tr>
+    <tr>
+      <td>5.2 External Dependencies</td>
+      <td>
+        - The app may rely on external services for lottery data, payment processing, or notifications.<br>
+        - Integration with these external services should be reliable and secure.
+      </td>
+    </tr>
+    <tr>
+      <td>5.3 Monetization Strategy</td>
+      <td>
+        - The Basic Lottery App will generate revenue through ticket sales and potentially through in-app advertising or premium features.<br>
+        - The monetization strategy should be developed to ensure profitability while maintaining a positive user experience.
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>6. Conclusion:</strong></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        The Basic Lottery App aims to provide an engaging and convenient platform for users to participate in lottery games.
+        By incorporating the outlined features and adhering to the specified requirements, the app will offer an enjoyable experience for lottery enthusiasts while maintaining high standards of security, performance, and user satisfaction.
+      </td>
+    </tr>
+  </table>
+</div>
     <div class="top-140-pad">
         <div class="sticky pull-right">
             <div>
